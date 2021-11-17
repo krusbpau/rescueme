@@ -8,14 +8,18 @@
  //Poistetaan selaimelta tulleesta pyynnöstä urlin lopussa olevat parametrit, jotka erotetaan ?-merkillä osoitteesta.
  $request = strtok($request, '?');
 
+//Luodaan uusi Plates-olio ja kytketään se sovelluksen sivupohjiin.
+
+ $templates = new League\Plates\Engine('../src/view');
+
  //Ehtolauseilla selvitetään, mitä sivua on alunperin kutsuttu ja suoritetaan sivua vastaava käsittelijä.
  //Jos sivua ei tunnisteta, tulostuu tieto virheellisestä sivupyynnöstä.
  if ($request === '/' || $request === '/tapahtumat') {
-    echo '<h1>Kaikki tapahtumat</h1>';
-  } else if ($request === '/tapahtumat') {
-    echo '<h1>Yksittäisen tapahtuman tiedot</h1>';
+    echo $templates->render('tapahtumat');
+  } else if ($request === '/tapahtuma') {
+    echo $templates->render('tapahtuma');
   } else {
-    echo '<h1>Pyydettyä sivua ei löytynyt</h1>';
+    echo $templates->render('notfound');
   }
 
 ?>
