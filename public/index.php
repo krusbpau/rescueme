@@ -1,8 +1,10 @@
 <?php
-  //Siistitään polku niin, että url-osoite lyhentyy muotoon /tapahtuma.
+ //Siistitään polku niin, että url-osoite lyhentyy muotoon /tapahtuma.
 
+ // Suoritetaan projektin aloitusskripti
+   require_once '../src/init.php';
  //Poistetaan polku kutsuttuun skriptiin.
- $request = str_replace('~pkrusber/rescueme', '',$_SERVER['REQUEST_URI']);
+ $request = str_replace($config['urls']['baseUrl'], '',$_SERVER['REQUEST_URI']);
  //Poistetaan selaimelta tulleesta pyynnöstä urlin lopussa olevat parametrit, jotka erotetaan ?-merkillä osoitteesta.
  $request = strtok($request, '?');
 
