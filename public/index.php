@@ -10,7 +10,7 @@
 
 //Luodaan uusi Plates-olio ja kytketään se sovelluksen sivupohjiin.
 
- $templates = new League\Plates\Engine('../src/view');
+ $templates = new League\Plates\Engine(TEMPLATE_DIR);
 
  //Ehtolauseilla selvitetään, mitä sivua on alunperin kutsuttu ja suoritetaan sivua vastaava käsittelijä.
  //Jos sivua ei tunnisteta, tulostuu tieto virheellisestä sivupyynnöstä.
