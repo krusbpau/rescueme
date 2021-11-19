@@ -8,7 +8,6 @@
    <input id="nimi" type="text" name="nimi">
   </div>
   <div>
-  <div>
     <label for="email">Sähköposti:</label>
     <input id="email" type="email" name="email">
   </div>
