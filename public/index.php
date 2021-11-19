@@ -15,7 +15,9 @@
  //Ehtolauseilla selvitetään, mitä sivua on alunperin kutsuttu ja suoritetaan sivua vastaava käsittelijä.
  //Jos sivua ei tunnisteta, tulostuu tieto virheellisestä sivupyynnöstä.
  if ($request === '/' || $request === '/tapahtumat') {
-    echo $templates->render('tapahtumat');
+    require_once MODEL_DIR . 'tapahtuma.php';
+    $tapahtumat = haeTapahtumat();
+    echo $templates->render('tapahtumat', ['tapahtumat' => $tapahtumat]);
   } else if ($request === '/tapahtuma') {
     echo $templates->render('tapahtuma');
   } else {
