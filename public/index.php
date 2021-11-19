@@ -14,21 +14,26 @@
 
  //Ehtolauseilla selvitetään, mitä sivua on alunperin kutsuttu ja suoritetaan sivua vastaava käsittelijä.
  //Jos sivua ei tunnisteta, tulostuu tieto virheellisestä sivupyynnöstä.
- if ($request === '/' || $request === '/tapahtumat') {
-    require_once MODEL_DIR . 'tapahtuma.php';
-    $tapahtumat = haeTapahtumat();
-    echo $templates->render('tapahtumat', ['tapahtumat' => $tapahtumat]);
-  } else if ($request === '/tapahtuma') {
-    require_once MODEL_DIR . 'tapahtuma.php';
-    $tapahtuma = haeTapahtuma($_GET['id']);
-    if ($tapahtuma) {
-    echo $templates->render('tapahtuma',['tapahtuma' => $tapahtuma]);
-  } else {
-    echo $templates->render('tapahtumanotfound');
+ switch ($request) {
+   case '/':
+   case '/tapahtumat':
+     require_once MODEL_DIR . 'tapahtuma.php';
+     $tapahtumat = haeTapahtumat();
+     echo $templates->render('tapahtumat', ['tapahtumat' => $tapahtumat]);
+   break;
+   case  '/tapahtuma':
+     require_once MODEL_DIR . 'tapahtuma.php';
+     $tapahtuma = haeTapahtuma($_GET['id']);
+     if ($tapahtuma) {
+      echo $templates->render('tapahtuma',['tapahtuma' => $tapahtuma]);
+   }  else {
+      echo $templates->render('tapahtumanotfound');
     }
-  } else if ($request === '/lisaa_tili') {
+   break;
+   case  '/lisaa_tili':
     echo $templates->render('lisaa_tili');
-  } else {
+   break;
+   default:
     echo $templates->render('notfound');
   }
 
