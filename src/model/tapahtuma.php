@@ -7,4 +7,8 @@
     return DB::run('SELECT * FROM tapahtuma ORDER BY tap_alkaa;')->fetchAll();
 }
 
+//Esitellään haeTapahtuma-funktio, joka hakee tietokannasta yksittäisen tapahtuman tiedot.
+   function haeTapahtuma($id) {
+    return DB::run('SELECT * FROM tapahtuma WHERE idtapahtuma =?;', [$id])->fetch();
+}
 ?>
