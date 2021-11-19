@@ -6,7 +6,7 @@
   </head>
   <body>
    <header>
-    <h1>Rescue me</h1>
+    <h1><a href="<?=BASEURL?>">Rescue me</a> </h1>
    </header>
    <section>
     <?=$this->section('content')?>
