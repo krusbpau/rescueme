@@ -12,4 +12,14 @@ function cleanArrayData($array=[]) {
   return $result;
  }
 
+function getValue($values, $key) {
+//Palautetaan kentän arvo taulukosta, jos se on määritelty, muuten palautetaan tyhjäarvo.
+ if (array_key_exists($key, $values)) {
+//Muutetaan tietyt merkit erikoismerkeiksi, jotta kentän arvo turvallista tulostaa sivulle.
+   return htmlspecialchars($values[$key]);
+ } else {
+  return null;
+ }
+}
+
 ?>
