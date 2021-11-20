@@ -12,7 +12,7 @@ $error = [];
 if (!isset($formdata['nimi']) || !$formdata['nimi']) {
    $error['nimi'] = "Anna nimesi.";
  } else {
-   if (!preg_match("/^[-'\p{L}]+$/u", $formdata["nimi"])) {
+   if (!preg_match("/^[- '\p{L}]+$/u", $formdata["nimi"])) {
    $error['nimi'] = "Syötä nimesi ilman erikoismerkkejä.";
   }
 }
@@ -23,7 +23,11 @@ if (!isset($formdata['email']) || !$formdata['email']) {
  } else {
    if (!filter_var($formdata['email'], FILTER_VALIDATE_EMAIL)) {
    $error['email'] = "Sähköpostiosoite on virheellisessä muodossa.";
+  } else {
+if (haeHenkiloSahkopostilla($formdata['email'])) {
+   $error['email'] = "Sähköpostiosoite on jo käytössä.";
   }
+ }
 }
 
 //Tarkistetaan, että molemmat salasanat on annettu ja, että ne vastaavat toisiaan.
