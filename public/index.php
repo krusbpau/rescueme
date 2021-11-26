@@ -1,4 +1,7 @@
 <?php
+//Lisätään istunnon aloitus, joká huolehtii kaikkien sivujen kutsuista.
+  session_start();
+
  //Siistitään polku niin, että url-osoite lyhentyy muotoon /tapahtuma.
 
  // Suoritetaan projektin aloitusskripti
@@ -50,7 +53,10 @@
   if (isset($_POST['laheta'])){
    require_once CONTROLLER_DIR . 'kirjaudu.php';
    if(tarkistaKirjautuminen($_POST['email'],$_POST['salasana'])) {
-    echo "Kirjautuminen ok!";
+//Määritellään käyttäjän sähköpostiosoitteen user-nimisen istuntomuuttujan arvoksi.
+//Edelleenohjataan käyttäjä sovelluksen etusivulle.
+    $_SESSION['user'] = $_POST['email'];
+    header("Location: " . $config['urls']['baseUrl']);
  } else {
    echo $templates->render('kirjaudu', ['error' => ['virhe' => 'Väärä käyttäjätunnus tai salasana']]);
  }
