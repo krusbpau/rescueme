@@ -55,6 +55,9 @@
    if(tarkistaKirjautuminen($_POST['email'],$_POST['salasana'])) {
 //Määritellään käyttäjän sähköpostiosoitteen user-nimisen istuntomuuttujan arvoksi.
 //Edelleenohjataan käyttäjä sovelluksen etusivulle.
+
+//Vaihdetaan istuntotunnus kirjautumisen yhteydessä.
+    session_regenerate_id();
     $_SESSION['user'] = $_POST['email'];
     header("Location: " . $config['urls']['baseUrl']);
  } else {
