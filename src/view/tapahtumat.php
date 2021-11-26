@@ -1,7 +1,7 @@
 
 <?php $this->layout('template', ['title' => 'Tulevat tapahtumat']) ?>
 
-<h1>Tulevat tapahtumat</h1>
+<h1 class='etusivu'>Tulevat tapahtumat</h1>
 
 <div class='tapahtumat'>
 <?php
@@ -13,7 +13,7 @@ foreach ($tapahtumat as $tapahtuma) {
 
   echo "<div>";
    echo "<div>$tapahtuma[nimi]</div>";
-   echo "<div>" . $start->format('j.n.Y') . "-" . $end->format('j.n.Y') . "</div>";
+   echo "<div>" . $start->format('j.n.Y'). "</div>";
    echo "<div><a href='tapahtuma?id=" . $tapahtuma['idtapahtuma'] . "'>TIEDOT</a></div>";
   echo "</div>";
 
