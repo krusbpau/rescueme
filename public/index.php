@@ -2,14 +2,26 @@
 //Lisätään istunnon aloitus, joká huolehtii kaikkien sivujen kutsuista.
   session_start();
 
+
  //Siistitään polku niin, että url-osoite lyhentyy muotoon /tapahtuma.
 
  // Suoritetaan projektin aloitusskripti
    require_once '../src/init.php';
+//Tarkistetaan onko käyttäjä kirjautunut sisälle, jos on haetaan käyttäjän tiedot ja tallennetaan ne loggeduser-muuttujaan.
+ if (isset($_SESSION['user'])) {
+  require_once MODEL_DIR . 'henkilo.php';
+  $loggeduser = haeHenkilo($_SESSION['user']);
+ } else {
+//Jos käyttäjä ei ole kirjautunut, loggeduserin arvoksi määritellään tyhjä (NULL).
+$loggeduser = NULL;
+}
+
  //Poistetaan polku kutsuttuun skriptiin.
  $request = str_replace($config['urls']['baseUrl'], '',$_SERVER['REQUEST_URI']);
  //Poistetaan selaimelta tulleesta pyynnöstä urlin lopussa olevat parametrit, jotka erotetaan ?-merkillä osoitteesta.
  $request = strtok($request, '?');
+
+
 
 //Luodaan uusi Plates-olio ja kytketään se sovelluksen sivupohjiin.
 
@@ -52,7 +64,7 @@
   case '/kirjaudu':
   if (isset($_POST['laheta'])){
    require_once CONTROLLER_DIR . 'kirjaudu.php';
-   if(tarkistaKirjautuminen($_POST['email'],$_POST['salasana'])) {
+   if (tarkistaKirjautuminen($_POST['email'],$_POST['salasana'])) {
 //Määritellään käyttäjän sähköpostiosoitteen user-nimisen istuntomuuttujan arvoksi.
 //Edelleenohjataan käyttäjä sovelluksen etusivulle.
 

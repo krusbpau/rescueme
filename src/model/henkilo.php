@@ -14,4 +14,8 @@ function haeHenkiloSahkopostilla($email) {
    return DB::run('SELECT * FROM henkilo WHERE email =?;', [$email])->fetchAll();
 }
 
+//Funktio palauttaa tulosjoukon ensimmäisen rivin.
+function haeHenkilo($email) {
+  return DB::run('SELECT * FROM henkilo WHERE email = ?;', [$email])->fetch();
+}
 ?>
