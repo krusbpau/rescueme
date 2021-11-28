@@ -13,7 +13,7 @@
   $loggeduser = haeHenkilo($_SESSION['user']);
  } else {
 //Jos käyttäjä ei ole kirjautunut, loggeduserin arvoksi määritellään tyhjä (NULL).
-$loggeduser = NULL;
+  $loggeduser = NULL;
 }
 
  //Poistetaan polku kutsuttuun skriptiin.
@@ -92,6 +92,34 @@ $loggeduser = NULL;
    logout();
    header("Location: " . $config['urls']['baseUrl']);
    break;
+
+ case '/ilmoittaudu':
+//Tarkistetaan onko kutsun yhteydessä annettut tapahtuman id.
+   if ($_GET['id']) {
+   require_once MODEL_DIR . 'ilmoittautuminen.php';
+   $idtapahtuma = $_GET['id'];
+//Lisätään ilmoittautuminen kirjautuneelle käyttäjälle ja ohjataan takaisin tapahtumasivulle.
+   if ($loggeduser) {
+     lisaaIlmoittautuminen($loggeduser['idhenkilo'], $idtapahtuma);
+   }
+   header("Location: tapahtuma?id=$idtapahtuma");
+ } else {
+   header("Location: tapahtumat");
+}
+   break;
+
+ case '/peru':
+   if ($_GET['id']) {
+   require_once MODEL_DIR . 'ilmoittautuminen.php';
+   $idtapahtuma = $_GET['id'];
+   if ($loggeduser) {
+     poistaIlmoittautuminen($loggeduser['idhenkilo'], $idtapahtuma);
+  }
+   header("Location: tapahtuma?id=$idtapahtuma");
+  } else {
+    header("Location: tapahtumat");
+  }
+  break;
 
    default:
     echo $templates->render('notfound');

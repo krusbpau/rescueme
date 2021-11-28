@@ -8,7 +8,7 @@ function haeIlmoittautuminen($idhenkilo, $idtapahtuma) {
 }
 //Ilmoitetaan käyttäjä tapahtumaan lisäämällä ilmoittautuminen-tauluun yhteys käyttäjän ja tapahtuman välille.
 function lisaaIlmoittautuminen($idhenkilo, $idtapahtuma) {
-  DB::run('INSERT INTO ilmoittautuminen ($idhenkilo, $idtapahtuma) VALUE (?,?)',
+  DB::run('INSERT INTO ilmoittautuminen (idhenkilo, idtapahtuma) VALUE (?,?)',
                   [$idhenkilo, $idtapahtuma]);
 return DB::lastInsertID();
 }
@@ -18,4 +18,4 @@ function poistaIlmoittautuminen($idhenkilo, $idtapahtuma) {
                 [$idhenkilo, $idtapahtuma])->rowCount();
 }
 
-?> 
+?>

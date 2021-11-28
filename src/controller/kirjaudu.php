@@ -6,7 +6,9 @@ function tarkistaKirjautuminen($email="", $salasana="") {
 
 //Haetaan käyttäjätiedot sähköpostiosoitteella.
 require_once(MODEL_DIR . 'henkilo.php');
+
 $tiedot = haeHenkilo($email);
+$tiedot = haeHenkiloSahkopostilla($email);
 //Tarkistuksessa käytetään tulosjoukon ensimmäistä tulosta.
 $tiedot = array_shift($tiedot);
 
@@ -15,7 +17,8 @@ $tiedot = array_shift($tiedot);
 if ($tiedot && password_verify($salasana, $tiedot['salasana']))  {
 //Käyttäjä löytyi, palautuu tosi.
    return true;
-}
+
+} 
 //Käyttäjää ei löydy tai salasana on väärin.
  return false;
 
