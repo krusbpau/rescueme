@@ -8,7 +8,6 @@
 
 html { 
  font-family: 'Rubik', sans-serif; 
-// background-image: -webkit-linear-gradient(left, #444544 80%, #727372 30%);
  background: #444544;
 }
 
@@ -17,7 +16,6 @@ body {
  max-width:70rem;
  margin: 0 auto ;
  background-color: #e3ab12;
- //color:#FFF;
  //background-image: url('../images/westie.jpg');
 //background-repeat: no-repeat;
  //background-position: right;
@@ -66,12 +64,12 @@ footer {
  color: #1B1B3A
 }
 
-
-
-//.tapahtumat > div {
+.tapahtumat > div {
  display: grid;
  grid-template-columns: 1fr 1fr 1fr;
- }
+}
+
+ 
 
 .tapahtumat > div > div:nth-child(3) {
 text-align: right;
@@ -79,15 +77,12 @@ text-align: right;
 
 .tapahtumat > div {
  display: inline-block;
-
- justify-content: space-between;
-//grid-template-columns:500px 300px 500px;
- //grid-template-rows: 1fr 1fr 1fr;
+ justify-content: space-between;  
  column-gap: 10px;
  row-gap: 30px;
  width: 500px;
  height:130px;
-margin: 30px 20px;
+ margin: 30px 20px;
  background-color: #fff;
  text-align: left;
  font-size:1.6rem;
@@ -100,7 +95,7 @@ margin: 30px 20px;
  font-size: 1rem;
  //background-color: #e3ab12;
 }
- 
+
 form > div {
  display: flex;
  flex-direction: column;
@@ -112,16 +107,17 @@ input {
  border-radius: 0.3rem;
  padding: 0.45rem;
  font-size: 1rem;
+ width: 30rem;
 }
 
 input[type=submit], .button {
  padding: 0.5rem 3rem;
  border-radius: 0.3rem;
- background-color: #975579;
+ background-color: #444544;
  color: #fff;
  font-weight: bold;
  min-width: 12rem;
- margin: 1rem auto;
+ margin-top: 1rem;
 }
 
 .flexarea {

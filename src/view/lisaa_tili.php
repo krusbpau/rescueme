@@ -11,7 +11,7 @@
   <div>
     <label for="email">Sähköposti:</label>
     <input id="email" type="email" name="email" value="<?= getValue($formdata, 'email') ?>">
-    <div class"error"><span><?= getValue($error,'email'); ?></span></div>
+    <div class="error"><span><?= getValue($error,'email'); ?></span></div>
   </div>
   <div>
     <label for="salasana1">Salasana:</label>

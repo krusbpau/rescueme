@@ -24,7 +24,7 @@
   </section>
   <footer>
    <hr>
-   <div>rescue me</div>
+   <div>rescue me by westie rescue</div>
   </footer>
  </body>
 </html>

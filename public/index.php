@@ -57,7 +57,7 @@
      if (isset($_POST['laheta'])){
      $formdata = cleanArrayData($_POST);
      require_once CONTROLLER_DIR . 'tili.php';
-     $tulos = lisaaTili($formdata);
+     $tulos = lisaaTili($formdata,$config['urls']['baseUrl']);
      if ($tulos['status'] == "200"){
      echo $templates->render('tili_luotu', ['formdata' => $formdata]);
    break;
@@ -69,7 +69,7 @@
    break;
 
 }
-  case '/kirjaudu':
+  case "/kirjaudu":
   if (isset($_POST['laheta'])){
    require_once CONTROLLER_DIR . 'kirjaudu.php';
    if (tarkistaKirjautuminen($_POST['email'],$_POST['salasana'])) {

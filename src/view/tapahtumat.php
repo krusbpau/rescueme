@@ -1,7 +1,7 @@
 
 <?php $this->layout('template', ['title' => 'Tulevat tapahtumat']) ?>
 
-<h1 class='etusivu'>Tulevat tapahtumat</h1>
+<h1 class='etusivu'>Westie Rescuen tulevat tapahtumat</h1>
 
 <div class='tapahtumat'>
 <?php
