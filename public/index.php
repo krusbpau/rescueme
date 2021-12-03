@@ -73,6 +73,9 @@
   if (isset($_POST['laheta'])){
    require_once CONTROLLER_DIR . 'kirjaudu.php';
    if (tarkistaKirjautuminen($_POST['email'],$_POST['salasana'])) {
+   require_once MODEL_DIR . 'henkilo.php';
+   $user = haeHenkilo($_POST['email']);
+   if ($user['vahvistettu']) { 
 //Määritellään käyttäjän sähköpostiosoitteen user-nimisen istuntomuuttujan arvoksi.
 //Edelleenohjataan käyttäjä sovelluksen etusivulle.
 
@@ -81,6 +84,9 @@
     $_SESSION['user'] = $_POST['email'];
     header("Location: " . $config['urls']['baseUrl']);
  } else {
+   echo $templates->render('kirjaudu', ['error' => ['virhe' =>'Tili on vahvistamatta! Ole hyvä, ja vahvista tili sähköpostissa olevalla linkillä.']]);
+ }
+} else {
    echo $templates->render('kirjaudu', ['error' => ['virhe' => 'Väärä käyttäjätunnus tai salasana']]);
  }
 } else {
@@ -121,12 +127,15 @@
   }
   break;
 
+//Aktivoidaan tili, kun sähköpostissa olevaa aktivointilinkkiä painetaan.
  case '/vahvista':
    if (isset($_GET['key'])) {
      $key = $_GET['key'];
      require_once MODEL_DIR . 'henkilo.php';
      if (vahvistaTili($key)) {
+//Jos koodi löytyy, tulostetaan sivu, jossa kerrotaan aktiovinnin onnistumisesta.
       echo $templates->render('tili_aktivoitu');
+//Jos aktivointiavainta ei anneta, käyttäjä ohjataan pääsivulle.
      } else {
       echo $templates->render('tili_aktivointi_virhe');
       }
