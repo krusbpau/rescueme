@@ -19,7 +19,7 @@ function haeHenkilo($email) {
   return DB::run('SELECT * FROM henkilo WHERE email = ?;', [$email])->fetch();
 }
 
-function paivitaVahvavain($email,$avan) {
+function paivitaVahvavain($email,$avain) {
   return DB::run('UPDATE henkilo SET vahvavain = ? WHERE email = ?', [$avain,$email])->rowCount();
 }
 

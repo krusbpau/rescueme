@@ -1,6 +1,6 @@
 <?php
 
-  function lisaaTili($formdata, $baseUrl='') {
+  function lisaaTili($formdata, $baseurl='') {
 
 //Tuodaan henkilo-mallin funktiot, joilla voidaan lisätä henkilön tiedot tietokantaan.
   require_once(MODEL_DIR . 'henkilo.php');
