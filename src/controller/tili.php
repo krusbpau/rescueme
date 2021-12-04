@@ -43,7 +43,7 @@ if (isset($formdata['salasana1']) && $formdata['salasana1'] &&
 //Lisätään tiedot tietokantaan, jos syötetyt tiedot oli oikein.
 if (!$error) {
 
-//Haetaan syötetyt tiedot omiin muuttujiinsa ja salataan salasana.
+   //Haetaan syötetyt tiedot omiin muuttujiinsa ja salataan salasana.
     $nimi = $formdata['nimi'];
     $email = $formdata['email'];
     $salasana = password_hash($formdata['salasana1'], PASSWORD_DEFAULT);
