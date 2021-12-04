@@ -94,7 +94,7 @@ function lahetaVahvavain($email,$url) {
            "Varmista osoite klikkaamalla alla olevaa linkkiä.\n\n" .
            "$url\n\n" .
            "Mikäli et ole jättänyt sähköpostiosoitettasi Westie Rescue-\n" .
-           "sivustolle, sinun ei´tarvitse tehdä muuta kuin poistaa tämä\n" .
+           "sivustolle, sinun ei tarvitse tehdä muuta kuin poistaa tämä\n" .
            "viesti.\n\n" .
            "Terveisin, Westie Rescue";
 return mail($email,'Rescue me -aktivointilinkki',$message);
