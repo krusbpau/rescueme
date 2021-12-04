@@ -40,14 +40,26 @@
      require_once MODEL_DIR . 'tapahtuma.php';
      require_once MODEL_DIR . 'ilmoittautuminen.php';
      $tapahtuma = haeTapahtuma($_GET['id']);
+     $ilmoittautuneita = laskeIlmoittautuneet($_GET['id']);
      if ($tapahtuma) {
         if($loggeduser) {
          $ilmoittautuminen = haeIlmoittautuminen($loggeduser['idhenkilo'],$tapahtuma['idtapahtuma']);
     } else {
          $ilmoittautuminen = NULL;
     }
+     $naytailmoittautuminen = false;
+     $tapahtumataynna = false;
+     if (!$ilmoittautuminen && $ilmoittautuneita['kpl'] < $tapahtuma['osallistujia']) {
+       $naytailmoittautuminen = true;
+      }
+     if ($ilmoittautuneita['kpl'] >= $tapahtuma['osallistujia']) {
+          $tapahtumataynna = true;
+      }
       echo $templates->render('tapahtuma',['tapahtuma' => $tapahtuma,
                                            'ilmoittautuminen' => $ilmoittautuminen,
+                                           'naytailmoittautuminen' => $naytailmoittautuminen,
+                                           'tapahtumataynna' => $tapahtumataynna,
+                                           'ilmoittautuneita' => $ilmoittautuneita['kpl'],
                                            'loggeduser' => $loggeduser]);
    }  else {
       echo $templates->render('tapahtumanotfound');

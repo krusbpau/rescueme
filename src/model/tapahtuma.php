@@ -11,4 +11,7 @@
    function haeTapahtuma($id) {
     return DB::run('SELECT * FROM tapahtuma WHERE idtapahtuma = ?;',[$id])->fetch();
 }
+   function laskeIlmoittautuneet($id) {
+    return DB::run('SELECT COUNT(*) AS kpl FROM ilmoittautuminen WHERE idtapahtuma = ?;', [$id])->fetch();
+}
 ?>
